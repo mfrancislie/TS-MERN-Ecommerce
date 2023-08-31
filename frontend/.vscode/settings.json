@@ -1,0 +1,15 @@
+{
+  "workbench.colorTheme": "Default Dark+",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  // optional
+  // "window.zoomLevel": 1,
+  "editor.minimap.enabled": false,
+  "workbench.statusBar.visible": false,
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
