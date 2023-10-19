@@ -1,11 +1,10 @@
-import {Container, Nav, Navbar} from 'react-bootstrap'
+import { Container, Nav, Navbar } from 'react-bootstrap'
 import { Outlet } from 'react-router-dom'
 
 function App() {
-
   return (
     <div>
-       <header>
+      <header>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
             <Navbar.Brand>tsamazona</Navbar.Brand>
@@ -21,11 +20,13 @@ function App() {
         </Navbar>
       </header>
       <main>
-        <Container className='mt-3'>
-          <Outlet/>
+        <Container className="mt-3">
+          <Outlet />
         </Container>
       </main>
-      <footer>footer</footer>
+      <footer>
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   )
 }
