@@ -1,27 +1,66 @@
-# React + TypeScript + Vite
+## Create Node Server
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. backend folder
+   cd backend
+   npm init
 
-Currently, two official plugins are available:
+2. config typescript
+   npm install --save-dev typescript ts-node-dev
+   create tsconfig.json
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+   ```json
+   {
+     "compilerOptions": {
+       "target": "es2015",
+       "outDir": "./build",
+       "strict": true,
+       "module": "commonjs",
+       "esModuleInterop": true
+     }
+   }
+   ```
 
-## Expanding the ESLint configuration
+   add dev and build command to package.json
+   `"dev": "ts-node-dev --respawn --transpile-only --files src/index.ts",`
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. config eslint
+   npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+   create .eslintrc.js
 
-- Configure the top-level `parserOptions` property like this:
+   ```js
+   module.exports = {
+     env: {
+       es2016: true,
+       node: true,
+     },
+     extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+     parser: '@typescript-eslint/parser',
+     parserOptions: {
+       ecmaVersion: 'es2016',
+       sourceType: 'module',
+     },
+     plugins: ['@typescript-eslint'],
+   }
+   ```
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+4. create express server
+   npm install express
+   npm install --save-sev @types/express
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+5. create src/index.ts
+   copy data.ts and Product.ts from frontend to backend
+
+   ```js
+   import express, { Request, Response } from 'express'
+   import { sampleProducts } from './data'
+   const app = express()
+   app.get('/api/products', (req: Request, res: Response) => {
+     res.json(sampleProducts)
+   })
+   const PORT = 4000
+   app.listen(PORT, () => {
+     console.log(`server started at http://localhost:${PORT}`)
+   })
+   ```
+
+   6. npm run dev
